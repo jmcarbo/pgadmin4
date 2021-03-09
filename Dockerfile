@@ -44,7 +44,7 @@ RUN rm -rf /pgadmin4/web/*.log \
 WORKDIR /pgadmin4/web
 
 # Build the JS vendor code in the app-builder, and then remove the vendor source.
-RUN export CPPFLAGS="-DPNG_ARM_NEON_OPT=0" && yarn install 
+RUN export CPPFLAGS="-DPNG_ARM_NEON_OPT=0" && yarn install --network-timeout 100000
 
 RUN export CPPFLAGS="-DPNG_ARM_NEON_OPT=0" && yarn run bundle 
 
