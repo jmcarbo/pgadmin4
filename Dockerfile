@@ -44,10 +44,11 @@ RUN rm -rf /pgadmin4/web/*.log \
 WORKDIR /pgadmin4/web
 
 # Build the JS vendor code in the app-builder, and then remove the vendor source.
-RUN export CPPFLAGS="-DPNG_ARM_NEON_OPT=0" && \
-    yarn install && \
-    yarn run bundle && \
-    rm -rf node_modules \
+RUN export CPPFLAGS="-DPNG_ARM_NEON_OPT=0" && yarn install 
+
+RUN export CPPFLAGS="-DPNG_ARM_NEON_OPT=0" && yarn run bundle 
+
+RUN rm -rf node_modules \
            yarn.lock \
            package.json \
            .[^.]* \
